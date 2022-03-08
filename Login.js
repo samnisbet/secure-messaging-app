@@ -13,15 +13,15 @@ function Login() {
     return (
         <View style={styles.container}>
             <View>
-                <Text style={{fontSize: 25, marginBottom: 15    }}>Login</Text>
+                <Text style={{fontSize: 25}}>Login</Text>
             </View>
-            <Text style={{marginTop: 40}}>Email</Text>
-            <View style={styles.input}> 
-                <TextInput placeholder='Your Email'/>
+            <Text style={{marginTop: 55}}>Email</Text>
+            <View>
+                <TextInput placeholder='Email' style={styles.input}/>
             </View>
             <Text style={{marginTop: 15}}>Password</Text>
             <View>
-                <TextInput placeholder='Your Password' secureTextEntry={true}/>
+                <TextInput placeholder='Password' secureTextEntry={true} style={styles.input}/>
             </View>
             <Pressable style={styles.button} onPress={() => Alert.alert('Login Button Pressed')}>
                 <Text>Log in</Text>
@@ -46,7 +46,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#cd9bf1'
     },
     input: {
-
+        backgroundColor: '#dac2f0',
+        height: 30,
+        width: 200,
+        marginTop: 10
     },
     button: {
         alignItems: 'center',
