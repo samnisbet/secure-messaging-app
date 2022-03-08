@@ -21,7 +21,7 @@ function Login() {
             </View>
             <Text style={{marginTop: 15}}>Password</Text>
             <View>
-                <TextInput placeholder='Your Password'/>
+                <TextInput placeholder='Your Password' secureTextEntry={true}/>
             </View>
             <Pressable style={styles.button} onPress={() => Alert.alert('Login Button Pressed')}>
                 <Text>Log in</Text>
