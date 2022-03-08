@@ -2,19 +2,18 @@ import React, {useState} from 'react';
 import {
     View, 
     Text,
-    TextInput, 
+    TextInput,
     Button,
-    TouchableOpacity, 
-    Dimensions, 
+    Pressable,
+    Alert,
     StyleSheet,
-    Platform
 } from 'react-native';
 
 function Login() {
     return (
         <View style={styles.container}>
             <View>
-                <Text style={{fontSize: 25}}>Login</Text> 
+                <Text style={{fontSize: 25, marginBottom: 15    }}>Login</Text>
             </View>
             <Text style={{marginTop: 40}}>Email</Text>
             <View style={styles.input}> 
@@ -24,7 +23,15 @@ function Login() {
             <View>
                 <TextInput placeholder='Your Password'/>
             </View>
-            <Button title='Log In'/>
+            <Pressable style={styles.button} onPress={() => Alert.alert('Login Button Pressed')}>
+                <Text>Log in</Text>
+            </Pressable>
+            <Pressable style={styles.link} onPress={() => Alert.alert('Reset Password')}>
+                <Text>Forgot Password?</Text>
+            </Pressable>
+            <Pressable style={styles.link} onPress={() => Alert.alert('Sign Up')}>
+                <Text>Sign Up</Text>
+            </Pressable>
         </View>
     )
 }
@@ -41,5 +48,18 @@ const styles = StyleSheet.create({
     input: {
 
     },
-    
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 4,
+        elevation: 10,
+        backgroundColor: '#bf94e4',
+        marginTop: 15
+    },
+    link: {
+        marginTop: 15,
+
+    },
 });
