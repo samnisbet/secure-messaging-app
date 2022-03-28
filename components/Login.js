@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import * as firebase from "firebase";
+
 import {
     View, 
     Text,
@@ -23,7 +25,7 @@ function Login() {
             <View>
                 <TextInput placeholder='Password' secureTextEntry={true} style={styles.input}/>
             </View>
-            <Pressable style={styles.button} onPress={() => Alert.alert('Login Button Pressed')}>
+            <Pressable style={styles.button} onPress={() => navigation.navigate('Login')}>
                 <Text>Log in</Text>
             </Pressable>
             <Pressable style={styles.link} onPress={() => Alert.alert('Reset Password')}>

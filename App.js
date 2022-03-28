@@ -1,38 +1,26 @@
-import React from 'react';
-import Login from "./Login";
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getDatabase } from 'firebase/database';
-import { getAuth } from 'firebase/auth';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import * as React from 'react';
+import firebaseConfig from "./CONFIG/FirebaseSDK";
+import * as firebase from "firebase";
+import Login from "./components/Login";
+import Home from "./components/Home";
+import Chat from './components/Chat';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { initializeApp } from 'firebase/app';
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyB6_8U3VCHM0voZziIfhnod-Ik0qyZVSlU",
-  authDomain: "messagingapp-dbfd0.firebaseapp.com",
-  databaseURL: "https://messagingapp-dbfd0-default-rtdb.firebaseio.com",
-  projectId: "messagingapp-dbfd0",
-  storageBucket: "messagingapp-dbfd0.appspot.com",
-  messagingSenderId: "911010586840",
-  appId: "1:911010586840:web:f9f83382048dd2a1ec77ad"
-};
+const Stack = createNativeStackNavigator();
+initializeApp(firebaseConfig);
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getDatabase(app);
-
-
-
-function App() {
+export default function App() {
   return (
-    <Login/>
-   
+    <NavigationContainer>
+    <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Login" component={Login} />
+    </Stack.Navigator>
+  </NavigationContainer>
   );
 }
-
-export default App;
 
 
 
