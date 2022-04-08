@@ -1,39 +1,29 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import Login from "./Login";
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getDatabase } from 'firebase/database';
-import { getAuth } from 'firebase/auth';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from './screens/Login'
+import Home from './screens/Home'
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyB6_8U3VCHM0voZziIfhnod-Ik0qyZVSlU",
-  authDomain: "messagingapp-dbfd0.firebaseapp.com",
-  databaseURL: "https://messagingapp-dbfd0-default-rtdb.firebaseio.com",
-  projectId: "messagingapp-dbfd0",
-  storageBucket: "messagingapp-dbfd0.appspot.com",
-  messagingSenderId: "911010586840",
-  appId: "1:911010586840:web:f9f83382048dd2a1ec77ad"
-};
+const Stack = createNativeStackNavigator();
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getDatabase(app);
-
-
-
-function App() {
+export default function App() {
   return (
-    <Login/>
-   
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
+          <Stack.Screen name="Home" component={Home} />
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 
-export default App;
-
-
-
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
