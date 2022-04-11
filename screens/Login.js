@@ -1,12 +1,25 @@
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
-import { TextInput, TouchableOpacity } from 'react-native-web'
+import { TextInput, TouchableOpacity } from 'react-native'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../Firebase'
+import { NavigationContainer} from '@react-navigation/native'
+import {useNavigation} from '@react-navigation/core'
 
-const Login = () => {
+const Login = ({navigation}) => {
     const [email, setEmail] = useState(' ')
     const [password, setPassword] = useState(' ')
+
+    /* const navigation = useNavigation
+
+    useEffect(() => {
+      const unsubscribe = auth.onAuthStateChanged(user => {
+            if(user) {
+               navigation.navigate("Home")
+            }
+        })
+        return unsubscribe
+    }, []) */
 
     const handleRegister =() => {
         createUserWithEmailAndPassword(auth, email, password)
@@ -48,6 +61,7 @@ const Login = () => {
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={handleRegister}
+                    onPress= {() => navigation.navigate('Home')}
                     style={[styles.button, styles.buttonOutline]}
                 >
                     <Text style={styles.buttonOutlineText}>Register</Text>

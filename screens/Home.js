@@ -1,10 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
+
 const Home = () => {
     return (
         <View>
-            <Text>Home Screen</Text>
+            <Text>Conversation Screen</Text>
         </View>
     )
 }
