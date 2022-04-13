@@ -7,8 +7,8 @@ import { NavigationContainer} from '@react-navigation/native'
 import {useNavigation} from '@react-navigation/core'
 
 const Login = ({navigation}) => {
-    const [email, setEmail] = useState(' ')
-    const [password, setPassword] = useState(' ')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     /* const navigation = useNavigation
 
@@ -60,8 +60,7 @@ const Login = ({navigation}) => {
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={handleRegister}
-                    onPress= {() => navigation.navigate('Home')}
+                    onPress= {() => {navigation.navigate('Home'); handleRegister;}}
                     style={[styles.button, styles.buttonOutline]}
                 >
                     <Text style={styles.buttonOutlineText}>Register</Text>
