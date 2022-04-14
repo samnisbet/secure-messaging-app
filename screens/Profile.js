@@ -1,6 +1,18 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, Button, Alert} from 'react-native'
 import profilePic from '../assets/profile.png';
+import { getAuth, signOut } from "firebase/auth";
+
+function clickLogout() {
+    navigation.navigate('Login')
+    const auth = getAuth();
+    signOut(auth).then(() => {
+        //signed out
+    }).catch((error) => {
+        //error
+    })
+}
+
 
 const Home = ({navigation}) => {
     return (
@@ -12,7 +24,7 @@ const Home = ({navigation}) => {
         onPress={() => navigation.navigate('Notifications')}
         title="Notifications"
       />
-
+            <Button title="Logout" onPress= {() => {clickLogout; navigation.navigate('Login');}} />
         </View>
     )
 }
