@@ -1,28 +1,18 @@
 import React, { useState } from 'react'
-import { KeyboardAvoidingView, StyleSheet, Text, View, Button } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../Firebase'
 import { NavigationContainer} from '@react-navigation/native'
 import {useNavigation} from '@react-navigation/core'
 
-const Login = ({navigation}) => {
+const Register = ({navigation}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-    /* const navigation = useNavigation
-
-    useEffect(() => {
-      const unsubscribe = auth.onAuthStateChanged(user => {
-            if(user) {
-               navigation.navigate("Home")
-            }
-        })
-        return unsubscribe
-    }, []) */
+    const [name, setName] = useState('')
 
     const handleRegister =() => {
-        createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password, name)
             .then((re)=>{
                 console.log(re);
             })
@@ -30,19 +20,25 @@ const Login = ({navigation}) => {
                 console.log(re);
             })
     };
-
     return (
+        
         <KeyboardAvoidingView
             style={styles.container}
             behavior="padding"
-        >
-            <View>
-               <Text style={styles.title}>Login</Text>
+           >
+             <View>
+               <Text style={styles.title}>Account Signup</Text>
             </View>
 
             <View style={styles.inputContainer}>
+            <TextInput
+                    placeholder="Username"      
+                    value={name}
+                    onChangeText={text => setName(text)}
+                    style={styles.input}
+                />
                 <TextInput
-                    placeholder="Email"
+                    placeholder='Email Address'
                     value={email}
                     onChangeText={text => setEmail(text)}
                     style={styles.input}
@@ -54,11 +50,7 @@ const Login = ({navigation}) => {
                     style={styles.input}
                     secureTextEntry
                 />
-            </View>
-
-            <View style={{marginLeft:150}}>
-                <Button onPress={() => navigation.navigate('ForgetPassword')} title="ForgetPassword?" color = "purple" >
-                </Button>
+                 
             </View>
 
             <View style={styles.buttonContainer}>
@@ -66,29 +58,21 @@ const Login = ({navigation}) => {
                     onPress={() => { }}
                     style={styles.button}
                 >
-                    <Text style={styles.buttonText}>Login</Text>
+                    <Text style={styles.buttonText}>Sign up</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={handleRegister}
-                    onPress= {() => navigation.navigate('Register')}
+                    onPress= {() => navigation.navigate('Login')}
                     style={[styles.button, styles.buttonOutline]}
                 >
-                    <Text style={styles.buttonOutlineText}>Create new account</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    onPress={handleRegister}
-                    onPress= {() => navigation.navigate('Home')}
-                    style={[styles.button, styles.buttonOutline]}
-                >
-                    <Text style={styles.buttonOutlineText}>Home</Text>
+                    <Text style={styles.buttonOutlineText}>Already have an account</Text>
                 </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
     )
 }
 
-export default Login
+export default Register
 
 const styles = StyleSheet.create({
     container: {
@@ -140,5 +124,5 @@ const styles = StyleSheet.create({
         color: 'rgb(76,0,153)', 
         fontWeight: 'bold',
     }
-    
+
 })
