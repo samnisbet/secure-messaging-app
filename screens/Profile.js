@@ -14,7 +14,7 @@ function clickLogout() {
 }
 
 
-const Home = ({navigation}) => {
+const Profile = ({navigation}) => {
     return (
         <View>
             <Image source ={profilePic} style={{width: 100, height: 100}}/>
@@ -29,7 +29,7 @@ const Home = ({navigation}) => {
     )
 }
 
-export default Home
+export default Profile
 
 const styles = StyleSheet.create({})
 

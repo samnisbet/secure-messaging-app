@@ -5,7 +5,7 @@ import 'firebase/firestore';
 import { Firestore } from 'firebase/firestore';
 
 
-export default function Home (){
+export default function Chat (){
     // const [ messages, setMessages] = useState([]);
     // const db = firebase.firestore()
 
@@ -21,7 +21,7 @@ export default function Home (){
                 user: {
                     _id: 2,
                     name: 'React Native',
-                    avatar: 'https://placeimg.com/640/460/animals',
+                    avatar: 'https://placeimg.com/630/450/animals',
                 },
             },
         ])
@@ -46,7 +46,7 @@ export default function Home (){
     )
 }
 
-// export default Home
+
 
 const styles = StyleSheet.create({
     TextInput:{
