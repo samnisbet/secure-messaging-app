@@ -1,9 +1,25 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 import { GiftedChat } from 'react-native-gifted-chat'
-import 'firebase/firestore';
-import { Firestore } from 'firebase/firestore';
+import { getFirestore, 
+    initializeFirestore,
+    collection,
+    addDoc,
+    query,
+    orderBy,
+    limit,
+    onSnapshot,
+    setDoc,
+    updateDoc,
+    doc,
+    serverTimestamp, } from "firebase/firestore";
+import {getStorage,
+    ref,
+    uploadBytesResumable,
+    getDownloadURL,
+} from 'firebase/storage'
 
+  import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 
 export default function Chat (){
     // const [ messages, setMessages] = useState([]);
@@ -28,7 +44,8 @@ export default function Chat (){
     }, [])
 
     const onSend = (messages = []) => {
-        setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+        setMessages(previousMessages => GiftedChat.append(previousMessages, messages)),
+        saveMessage(messages)
     }
     
     return (
@@ -59,3 +76,16 @@ const styles = StyleSheet.create({
     }
 })
 
+
+async function saveMessage(messageText) {
+    // Add a new message entry to the Firebase database.
+    try {
+      await addDoc(collection(getFirestore(), 'messages'), {
+        text: messageText,
+        timestamp: serverTimestamp()
+      });
+    }
+    catch(error) {
+      console.error('Error writing new message to Firebase Database', error);
+    }
+  }

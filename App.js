@@ -9,9 +9,12 @@ import Home from './screens/Home'
 import Tabs from './navigation/tabs'
 import Profile from './screens/Profile'
 import ProfileStack from './navigation/ProfileStack'
+import { initializeApp } from 'firebase/app';
+import { app } from './Firebase';
 
 
 const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   return (
