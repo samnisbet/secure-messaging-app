@@ -7,8 +7,20 @@ import notificationPic from '../assets/notification.png'
 import privacyPic from '../assets/privacy.png'
 import contactPic from '../assets/contact.png'
 import accountPic from '../assets/account.png'
+import { getAuth, signOut } from "firebase/auth";
 
-const Home = ({navigation}) => {
+function clickLogout() {
+    navigation.navigate('Login')
+    const auth = getAuth();
+    signOut(auth).then(() => {
+        //signed out
+    }).catch((error) => {
+        //error
+    })
+}
+
+
+const Profile = ({navigation}) => {
     return (
         <View>
             <Image source ={profilePic} style={{width: 100, height: 100}}/>
@@ -71,7 +83,7 @@ const Home = ({navigation}) => {
     )
 }
 
-export default Home
+export default Profile
 
 const styles = StyleSheet.create({
             button:{
