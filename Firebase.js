@@ -24,6 +24,9 @@ import {getStorage,
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+// Initialize Firebase Cloud Messaging and get a reference to the service
+const messaging = getMessaging(app)
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyB6_8U3VCHM0voZziIfhnod-Ik0qyZVSlU",
