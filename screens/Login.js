@@ -69,7 +69,7 @@ const Login = ({navigation}) => {
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={handleRegister}
+                 //   onPress={handleRegister}
                     onPress= {() => navigation.navigate('Register')}
                     style={[styles.button, styles.buttonOutline]}
                 >
@@ -77,7 +77,7 @@ const Login = ({navigation}) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={handleRegister}
+                 //   onPress={handleRegister}
                     onPress= {() => navigation.navigate('Home')}
                     style={[styles.button, styles.buttonOutline]}
                 >

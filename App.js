@@ -15,7 +15,8 @@ import Account from './screens/Account';
 import Contact from './screens/Contact';
 import Privacy from './screens/Privacy';
 import Notifications from './screens/Notifications';
-
+import { initializeApp } from 'firebase/app';
+import { app } from './Firebase';
 
 const Stack = createNativeStackNavigator();
 

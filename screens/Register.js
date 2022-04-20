@@ -61,7 +61,7 @@ const Register = ({navigation}) => {
                     <Text style={styles.buttonText}>Sign up</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={handleRegister}
+                   // onPress={handleRegister}
                     onPress= {() => navigation.navigate('Login')}
                     style={[styles.button, styles.buttonOutline]}
                 >

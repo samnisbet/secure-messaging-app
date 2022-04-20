@@ -1,11 +1,27 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 import { GiftedChat } from 'react-native-gifted-chat'
-import 'firebase/firestore';
-import { Firestore } from 'firebase/firestore';
+import { getFirestore, 
+    initializeFirestore,
+    collection,
+    addDoc,
+    query,
+    orderBy,
+    limit,
+    onSnapshot,
+    setDoc,
+    updateDoc,
+    doc,
+    serverTimestamp, } from "firebase/firestore";
+import {getStorage,
+    ref,
+    uploadBytesResumable,
+    getDownloadURL,
+} from 'firebase/storage'
 
+  import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 
-export default function Home (){
+export default function Chat (){
     // const [ messages, setMessages] = useState([]);
     // const db = firebase.firestore()
 
@@ -21,14 +37,15 @@ export default function Home (){
                 user: {
                     _id: 2,
                     name: 'React Native',
-                    avatar: 'https://placeimg.com/640/460/animals',
+                    avatar: 'https://placeimg.com/630/450/animals',
                 },
             },
         ])
     }, [])
 
     const onSend = (messages = []) => {
-        setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+        setMessages(previousMessages => GiftedChat.append(previousMessages, messages)),
+        saveMessage(messages)
     }
     
     return (
@@ -46,15 +63,16 @@ export default function Home (){
     )
 }
 
-// export default Home
 
-const styles = StyleSheet.create({
-    TextInput:{
-        height:40,
-        width:'100%',
-        borderWidth:1,
-        borderRadius:5,
-        padding:10,
-        marginBottom: 20,
+async function saveMessage(messageText) {
+    // Add a new message entry to the Firebase database.
+    try {
+      await addDoc(collection(getFirestore(), 'messages'), {
+        text: messageText,
+        timestamp: serverTimestamp()
+      });
     }
-})
+    catch(error) {
+      console.error('Error writing new message to Firebase Database', error);
+    }
+  
