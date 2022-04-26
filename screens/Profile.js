@@ -1,6 +1,6 @@
 import { browserPopupRedirectResolver } from 'firebase/auth';
-import React from 'react'
-import { StyleSheet, Text, View, Image, Button, Alert} from 'react-native'
+import React, {useState, useEffect} from 'react'
+import { StyleSheet, Text, View, Image, Button, SafeAreaView, Alert} from 'react-native'
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import profilePic from '../assets/profile.png';
 import notificationPic from '../assets/notification.png'
@@ -8,6 +8,7 @@ import privacyPic from '../assets/privacy.png'
 import contactPic from '../assets/contact.png'
 import accountPic from '../assets/account.png'
 import { getAuth, signOut } from "firebase/auth";
+import * as ImagePicker from 'expo-image-picker';
 
 function clickLogout() {
     navigation.navigate('Login')
@@ -21,9 +22,31 @@ function clickLogout() {
 
 
 const Profile = ({navigation}) => {
+    const [image, setImage] = useState(null);
+ 
+
+
+    const SelectImage = async () => {
+        let photo = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+    });
+
+  console.log(photo);
+
+  if (!photo.cancelled) {
+    setImage(photo.uri);
+  }
+};
     return (
+        <SafeAreaView style={styles.container}>
+            <Button style={styles.buttonText} title="Edit Profile Photo" onPress={SelectImage} />
+            {image && <Image source={{ uri: image }} style={{ width: 100, height: 100, left: 150 }} />}
+
         <View>
-            <Image source ={profilePic} style={{width: 100, height: 100}}/>
+            {/* <Image source ={profilePic} style={{width: 100, height: 100}}/> */}
             <Text>      Joe P</Text>
            
             <Text>               
@@ -80,12 +103,16 @@ const Profile = ({navigation}) => {
             </View>
 
         </View>
+        </SafeAreaView>
     )
 }
 
 export default Profile
 
 const styles = StyleSheet.create({
+            container: {
+            flex: 1
+            },
             button:{
                 color:"purple",
                 paddingHorizontal: 32,
