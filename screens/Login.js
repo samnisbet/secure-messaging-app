@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, View, Button } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../Firebase'
+import { authentication } from '../firebase/firebase-config'
 import { NavigationContainer} from '@react-navigation/native'
 import {useNavigation} from '@react-navigation/core'
 
@@ -22,7 +22,7 @@ const Login = ({navigation}) => {
     }, []) */
 
     const handleRegister =() => {
-        createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(authentication, email, password)
             .then((re)=>{
                 console.log(re);
             })
