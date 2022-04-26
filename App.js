@@ -14,6 +14,7 @@ import ForgetPassword from './screens/ForgetPassword';
 import Account from './screens/Account';
 import Contact from './screens/Contact';
 import Privacy from './screens/Privacy';
+import Chat from './screens/Chat';
 import Notifications from './screens/Notifications';
 import { initializeApp } from 'firebase/app';
 import { app } from './firebase/firebase-config';
@@ -37,6 +38,8 @@ export default function App() {
           <Stack.Screen name= "Contact" component={Contact} />
           <Stack.Screen name= "Privacy" component={Privacy} />
           <Stack.Screen name= "Notifications" component={Notifications} />
+          <Stack.Screen name= "Chat" component={Chat} />
+
 
 
 
