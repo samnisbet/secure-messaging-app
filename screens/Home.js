@@ -13,11 +13,17 @@ const Home = ({navigation}) => {
             title="Joe P" 
             color ="black"
              />
+            <Text>               
+             ____________________________________________________
+            </Text>
              <Button 
             style={styles.buttonText} onPress={() => navigation.navigate("Chat")}
             title="Marcus" 
             color ="black"
              />
+             <Text>               
+             ____________________________________________________
+            </Text>
         </View>
     )
 }
