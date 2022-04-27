@@ -1,8 +1,24 @@
 import React,{useState} from 'react';
 import {View, Text, StyleSheet, TextInput, Button, Pressable, Alert} from 'react-native';
-
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { authentication } from "../firebase/firebase-config"
 
     const ForgetPassword = ({navigation}) => {
+      const [email, setEmail] = useState('')
+
+      const passwordReset =() => {
+        sendPasswordResetEmail(authentication, email)
+          .then(() => {
+            alert("email sent")
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert("Didn't work")
+          });
+      }
+
+
     return (
       <View style={styles.container}>
       
@@ -15,11 +31,16 @@ import {View, Text, StyleSheet, TextInput, Button, Pressable, Alert} from 'react
 
      
       <View>
-          <TextInput placeholder='Email Address' style={styles.input}/>
+        <TextInput
+          placeholder='Email Address'
+          value={email}
+          onChangeText={text => setEmail(text)}
+          style={styles.input}
+          />
       </View>
 
 
-      <Pressable style={styles.link} onPress={() => Alert.alert('Seccusful Submitted')}>
+      <Pressable style={styles.link} onPress={passwordReset}>
           <Text style={{fontSize:20, marginRight:100}} >Submit</Text>
       </Pressable>
 
