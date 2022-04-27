@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native'
 const Contact = () => {
     return (
         <View>
-            <Text>Contact Screen</Text>
+            <Text>Privacy Screen</Text>
         </View>
     )
 }
