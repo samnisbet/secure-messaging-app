@@ -1,7 +1,7 @@
 import { browserPopupRedirectResolver } from 'firebase/auth';
 import React, {useState, useEffect} from 'react'
 import { StyleSheet, Text, View, Image, Button, SafeAreaView, Alert} from 'react-native'
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+//import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import profilePic from '../assets/profile.png';
 import notificationPic from '../assets/notification.png'
 import privacyPic from '../assets/privacy.png'

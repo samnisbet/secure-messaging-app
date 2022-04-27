@@ -4,12 +4,19 @@ import { TextInput, TouchableOpacity } from 'react-native'
 import { authentication } from '../firebase/firebase-config'
 import { NavigationContainer} from '@react-navigation/native'
 import {useNavigation} from '@react-navigation/core'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+//import * as firebase from 'firebase'
+//import { EThree } from '@virgilsecurity/e3kit-native' // E3Kit for E2EE
 
 const Login = ({navigation}) => {
     const [isSignedin,setIsSignedIn] = useState(false);
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    //E2EE: 
+    //const getToken = firebase.functions().httpsCallable('getVirgilJwt')
+    //const initializeFunction = () => getToken().then(result => result.data.token)
+    
 
     const SignInUser = ()=>{
         signInWithEmailAndPassword(authentication, email, password)
@@ -47,8 +54,8 @@ const Login = ({navigation}) => {
                 />
             </View>
 
-            <View style={{marginLeft:150}}>
-                <Button onPress={() => navigation.navigate('ForgetPassword')} title="ForgetPassword?" color = "purple" >
+            <View style={{marginLeft:150, paddingTop: 10}}>
+                <Button onPress={() => navigation.navigate('ForgetPassword')} title="Forgot Password?" color = "purple" >
                 </Button>
             </View>
 
@@ -67,13 +74,13 @@ const Login = ({navigation}) => {
                     <Text style={styles.buttonOutlineText}>Create new account</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity
+                {/* <TouchableOpacity
             
                     onPress= {() => navigation.navigate('Home')}
                     style={[styles.button, styles.buttonOutline]}
                 >
                     <Text style={styles.buttonOutlineText}>Home</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
         </KeyboardAvoidingView>
     )
