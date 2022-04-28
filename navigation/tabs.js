@@ -16,15 +16,15 @@ const Tabs = () => {
             }}
             />
             <Tab.Screen 
-            name= "Profile" component={Profile} 
-            options={{
-                tabBarIcon: ({size, color}) => (<Icon name={"user"} color={color} size={size} />)
-            }}
-            />
-            <Tab.Screen 
             name= "Contacts" component={Contacts} 
             options={{
                 tabBarIcon: ({size, color}) => (<Icon name={"address-book"} color={color} size={size} />)
+            }}
+            />
+             <Tab.Screen 
+            name= "Profile" component={Profile} 
+            options={{
+                tabBarIcon: ({size, color}) => (<Icon name={"user"} color={color} size={size} />)
             }}
             />
         </Tab.Navigator>
