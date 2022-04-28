@@ -13,7 +13,7 @@ const Item = ({ name, email }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{name}</Text>
     <Text style={styles.email}>{email}</Text>
-    <Text style={styles.number}>{id}</Text>
+
   </View>
 );
 
@@ -22,15 +22,15 @@ const List = ({ searchPhrase, setCLicked, data }) => {
   const renderItem = ({ item }) => {
     // when no input, show all
     if (searchPhrase === "") {
-      return <Item name={item.name} email={item.email} id={item.id} />;
+      return <Item name={item.name} email={item.email} />;
     }
     // filter of the name
     if (item.name.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
-      return <Item name={item.name} email={item.email} id={item.id}/>;
+      return <Item name={item.name} email={item.email} />;
     }
     // filter of the description
     if (item.email.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
-      return <Item name={item.name} email={item.email} id={item.id}/>;
+      return <Item name={item.name} email={item.email} />;
     }
   };
 

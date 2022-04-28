@@ -14,7 +14,7 @@ const Contacts = () => {
   useEffect(() => {
     const getData = async () => {
       const apiResponse = await fetch(
-        "https://messagingapp-dbfd0-default-rtdb.firebaseio.com"
+        "https://raw.githubusercontent.com/AiniwaNubiya/AiniwaNurbiye/main/db.json"
       );
       const data = await apiResponse.json();
       setFakeData(data);
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   title: {
     width: "100%",
-    marginTop: 20,
+    marginTop: 3,
     fontSize: 25,
     fontWeight: "bold",
     marginLeft: "10%",
