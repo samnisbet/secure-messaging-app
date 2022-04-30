@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useLayoutEffect} from 'react'
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 import { GiftedChat } from 'react-native-gifted-chat'
 import { getFirestore, 
@@ -20,6 +20,7 @@ import {getStorage,
 } from 'firebase/storage'
 
   import { getMessaging, getToken, onMessage } from 'firebase/messaging';
+import { authentication, db } from '../firebase/firebase-config';
 
 export default function Chat (){
     // const [ messages, setMessages] = useState([]);
@@ -43,10 +44,27 @@ export default function Chat (){
         ])
     }, [])
 
+    // useLayoutEffect(() => {
+    //  db.collection('messages').orderBy('createdAt',
+    //   'desc').onSnapshot(snapshot => setMessages(
+    //       snapshot.docs.map(doc=>({
+    //         _id:doc.data().id,
+    //         createdAt:doc.data().createdAt.toDate(),
+    //         text:doc.data().text,
+    //         user:doc.data().user
+    //       }))
+    //   ))
+    
+    //   return unsubscribe;
+        
+    //   }, [])
+
     const onSend = (messages = []) => {
         setMessages(previousMessages => GiftedChat.append(previousMessages, messages)),
         saveMessage(messages)
+        
     }
+
     
     return (
         <View style={{flex:1}}>
@@ -55,7 +73,7 @@ export default function Chat (){
              messages={messages}
              onSend={messages => onSend(messages)}
              user={{
-                 _id:1,
+                 _id: authentication?.currentUser?.email,
              }}
              />
         
