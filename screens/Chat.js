@@ -72,9 +72,11 @@ export default function Chat (){
             <GiftedChat
              messages={messages}
              onSend={messages => onSend(messages)}
+             
              user={{
                  _id: authentication?.currentUser?.email,
-             }}
+                 avatar: 'https://placeimg.com/140/140/any'
+                 }}
              />
         
         </View>
