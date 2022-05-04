@@ -15,7 +15,8 @@ const NewChat = ({navigation}) => {
     }, [navigation]);
 
  const makeChat = async () =>{
-    await firestore.collection('chats').add({
+   
+        await addDoc(collection(getFirestore(), 'chats'), {
         chatName: input,
     }).then(() => {
         navigation.goBack();

@@ -1,13 +1,38 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState, useEffect} from "react";
 import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from "react-native";
 import { SafeAreaView } from "react-native";
 import {AntDesign, SimpleLineIcons} from "@expo/vector-icons"
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {ListItem, Avatar} from "react-native-elements";
+import { getFirestore, 
+    initializeFirestore,
+    collection,
+    addDoc,
+    query,
+    orderBy,
+    limit,
+    onSnapshot,
+    setDoc,
+    updateDoc,
+    doc,
+    serverTimestamp, getDoc } from "firebase/firestore";
 
 
 const Home = ({navigation}) => {
     const [chats, setChats] = useState([]);
+
+    // useEffect(() =>{
+    //     const unsubscribe = await getDoc(collection(getFirestore(), 'chats')).onSnapshot((snapshot) => 
+    //         setChats(
+    //             snapshot.docs.map((doc) => ({
+    //             id:doc.id,
+    //             data: doc.data()
+    //         }))
+    //         )
+    //     );
+    // return unsubscribe;
+        
+    // }, []);
 
     useLayoutEffect(() =>{
         navigation.setOptions({
