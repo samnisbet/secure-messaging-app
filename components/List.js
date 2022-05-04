@@ -38,7 +38,7 @@ const List = ({ searchPhrase, setCLicked, data }) => {
     <SafeAreaView style={styles.list__container}>
       <View
         onStartShouldSetResponder={() => {
-          setClicked(false);
+        
         }}
       >
         <FlatList

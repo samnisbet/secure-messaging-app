@@ -74,7 +74,9 @@ const Login = ({navigation}) => {
                     <Text style={styles.buttonOutlineText}>Create new account</Text>
                 </TouchableOpacity>
 
-                {/* <TouchableOpacity
+                
+
+              {/*   <TouchableOpacity
             
                     onPress= {() => navigation.navigate('Home')}
                     style={[styles.button, styles.buttonOutline]}

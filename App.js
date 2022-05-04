@@ -19,6 +19,7 @@ import Notifications from './screens/Notifications';
 import { initializeApp } from 'firebase/app';
 import { app } from './firebase/firebase-config';
 
+import { registerRootComponent } from 'expo';
 
 const Stack = createNativeStackNavigator();
 
@@ -56,3 +57,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+

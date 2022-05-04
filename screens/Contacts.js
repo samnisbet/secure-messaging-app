@@ -14,7 +14,7 @@ const Contacts = () => {
   useEffect(() => {
     const getData = async () => {
       const apiResponse = await fetch(
-        "https://raw.githubusercontent.com/AiniwaNubiya/AiniwaNurbiye/main/db.json"
+        "https://raw.githubusercontent.com/samnisbet/secure-messaging-app/main/db.json"
       );
       const data = await apiResponse.json();
       setFakeData(data);
@@ -28,15 +28,13 @@ const Contacts = () => {
       <SearchBar
         searchPhrase={searchPhrase}
         setSearchPhrase={setSearchPhrase}
-        clicked={clicked}
-        setClicked={setClicked}
+       
       />
       { (
 
           <List
             searchPhrase={searchPhrase}
             data={fakeData}
-            setClicked={setClicked}
           />
 
       )}
