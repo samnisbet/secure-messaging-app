@@ -3,6 +3,8 @@ import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { authentication } from '../firebase/firebase-config'
+import { firestore } from '../firebase/firebase-config'
+import { collection, addDoc } from "firebase/firestore"
 import { NavigationContainer} from '@react-navigation/native'
 import {useNavigation} from '@react-navigation/core'
 
@@ -10,15 +12,33 @@ const Register = ({navigation}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
+    const [uid, setUID] = useState('')
+    const usersCollection = collection(firestore, 'users')
+
+    async function saveUser() {
+        // Add a new user entry to the Firestore
+        try{
+            const docRef = await addDoc(collection(firestore, 'users'), {
+                uid: uid,
+                email: email,
+                name: name,
+            });
+            console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+    }
 
     const handleRegister =() => {
         createUserWithEmailAndPassword(authentication, email, password)
             .then(userCredentials => {
                 const user = userCredentials.user;
+                setUID(user.uid);
                 console.log(user.email);
                 navigation.navigate('Home');
             })
             .catch(error => alert(error.message))
+            .then(saveUser)
         }
 
     return (

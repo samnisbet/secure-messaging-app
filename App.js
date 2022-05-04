@@ -20,6 +20,7 @@ import { initializeApp } from 'firebase/app';
 import { app } from './firebase/firebase-config';
 
 import { registerRootComponent } from 'expo';
+import NewChat from './screens/NewChat';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +41,8 @@ export default function App() {
           <Stack.Screen name= "Privacy" component={Privacy} />
           <Stack.Screen name= "Notifications" component={Notifications} />
           <Stack.Screen name= "Chat" component={Chat} />
+          <Stack.Screen name= "NewChat" component={NewChat} />
+
 
 
 
