@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import {uid} from 'uid';
+// import {uid} from 'uid';
 import { getAuth, deleteUser} from "firebase/auth";
 import { authentication } from '../firebase/firebase-config'
 
