@@ -16,26 +16,23 @@ import { getFirestore,
     updateDoc,
     doc,
     serverTimestamp, getDoc } from "firebase/firestore";
-import {authentication, db} from '../firebase/firebase-config'
-import CustomListItem from "../components/CustomListItem";
 
 
 const Home = ({navigation}) => {
     const [chats, setChats] = useState([]);
 
-    useEffect(() =>{
-        // const unsubscribe = await getDoc(collection(getFirestore(), 'chats')).onSnapshot((snapshot) => 
-        const unsubscribe =  db.collection( 'chats').onSnapshot((snapshot) => 
-            setChats(
-                snapshot.docs.map((doc) => ({
-                id:doc.id,
-                data: doc.data()
-            }))
-            )
-        );
-    return unsubscribe;
+    // useEffect(() =>{
+    //     const unsubscribe = await getDoc(collection(getFirestore(), 'chats')).onSnapshot((snapshot) => 
+    //         setChats(
+    //             snapshot.docs.map((doc) => ({
+    //             id:doc.id,
+    //             data: doc.data()
+    //         }))
+    //         )
+    //     );
+    // return unsubscribe;
         
-    }, []);
+    // }, []);
 
     useLayoutEffect(() =>{
         navigation.setOptions({
@@ -56,21 +53,30 @@ const Home = ({navigation}) => {
         ),
     });
     }, [navigation]);
-
-    const enterChat =(id, chatName) =>{
-        navigation.navigate("Chat", {
-            id, chatName,
-        });
-    };
- 
-
     return (
+
+
         <SafeAreaView>
             <ScrollView>
-                {chats.map(({id, data: {chatName}}) => (
-                    <CustomListItem key={id} id={id} chatName={chatName} enterChat={enterChat}/>
-                ))}
-         {/* <CustomListItem onPress={() => navigation.navigate("Chat" )}/> */}
+            <ListItem  onPress={() => navigation.navigate("Chat" )} >
+      <Avatar
+      rounded
+      source={{
+        uri:
+      "https://placeimg.com/140/140/any"}}
+      />
+      <ListItem.Content>
+        <ListItem.Title style ={{fontWeight: "600"}} >
+        {/* <TouchableOpacity onPress={() => navigation.navigate("NewChat")}> */}
+          Joe P
+        </ListItem.Title>
+        <ListItem.Subtitle 
+        numberOfLines={1} 
+        ellipsizeMode ="tail">
+            Hey
+        </ListItem.Subtitle>
+      </ListItem.Content>
+    </ListItem>
             </ScrollView>
         </SafeAreaView>
     );
