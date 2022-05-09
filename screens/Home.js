@@ -53,12 +53,10 @@ const Home = ({navigation}) => {
         ),
     });
     }, [navigation]);
-
-
-
     return (
-        <SafeAreaView>
 
+
+        <SafeAreaView>
             <ScrollView>
             <ListItem  onPress={() => navigation.navigate("Chat" )} >
       <Avatar
@@ -80,32 +78,6 @@ const Home = ({navigation}) => {
       </ListItem.Content>
     </ListItem>
             </ScrollView>
-
-
-            <ScrollView>
-            <ListItem  onPress={() => navigation.navigate("GroupChat")} >
-      <Avatar
-      rounded
-      source={{
-        uri:
-         "https://placeimg.com/640/480/nature"}}
-      />
-      <ListItem.Content>
-        <ListItem.Title style ={{fontWeight: "600"}} >
-        {/* <TouchableOpacity onPress={() => navigation.navigate("NewChat")}> */}
-          Family Chat
-        </ListItem.Title>
-        <ListItem.Subtitle 
-        numberOfLines={1} 
-        ellipsizeMode ="tail">
-          Hey guys
-        </ListItem.Subtitle>
-      </ListItem.Content>
-    </ListItem>
-            </ScrollView>
-
-
-
         </SafeAreaView>
     );
 };

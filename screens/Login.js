@@ -76,13 +76,13 @@ const Login = ({navigation}) => {
 
                 
 
-                  {/*   <TouchableOpacity
+              {/*   <TouchableOpacity
+            
                     onPress= {() => navigation.navigate('Home')}
                     style={[styles.button, styles.buttonOutline]}
-                > 
+                >
                     <Text style={styles.buttonOutlineText}>Home</Text>
                 </TouchableOpacity> */}
-                
             </View>
         </KeyboardAvoidingView>
     )
