@@ -1,8 +1,8 @@
 
 import {useState} from 'react'
 import { StyleSheet, Text, View, TextInput,Button, TouchableOpacity, Linking, Form, Input,Textarea } from 'react-native'
-// import email from 'react-native-email';
-// import emailjs from "emailjs-com";
+import email from 'react-native-email';
+import emailjs from "emailjs-com";
 import React from 'react';
 
 const Contact = () => {

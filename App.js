@@ -1,3 +1,5 @@
+
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -20,9 +22,6 @@ import { app } from './firebase/firebase-config';
 import { registerRootComponent } from 'expo';
 import NewChat from './screens/NewChat';
 import GroupChat from './screens/GroupChat';
-import { EThree } from '@virgilsecurity/e3kit-native';
-import firebase from 'firebase';
-
 
 const Stack = createNativeStackNavigator();
 
