@@ -21,7 +21,6 @@ import { app } from './firebase/firebase-config';
 
 import { registerRootComponent } from 'expo';
 import NewChat from './screens/NewChat';
-import GroupChat from './screens/GroupChat';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,7 +42,6 @@ export default function App() {
           <Stack.Screen name= "Notifications" component={Notifications} />
           <Stack.Screen name= "Chat" component={Chat} />
           <Stack.Screen name= "NewChat" component={NewChat} />
-          <Stack.Screen name= "GroupChat" component={GroupChat} />
 
 
 
